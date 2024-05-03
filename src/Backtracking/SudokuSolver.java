@@ -1,10 +1,11 @@
 package Backtracking;
 public class SudokuSolver {
 
-    public static void solveSudoku(char[][] board) {
+    public static char[][] solveSudoku(char[][] board) {
         int a[][] = twoDCharArrayToIntArray(board);
         solveSudoku(a, 0, 0);
         board = intArrayToCharArray(a);
+        return board;
     }
 
     private static boolean solveSudoku(int[][] a, int row, int col) {
@@ -84,11 +85,11 @@ public class SudokuSolver {
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
         };
 
-        solveSudoku(input);
+        char[][] board = solveSudoku(input);
 
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                System.out.print(input[i][j] + " ");
+                System.out.print(board[i][j] + " ");
             }
             System.out.println(); // New line after each row
         }
