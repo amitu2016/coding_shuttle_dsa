@@ -1,28 +1,34 @@
 package Backtracking;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
+import java.util.HashSet;
 
 public class StringPermutations {
-    public static ArrayList<String> permute(String s){
+    public static ArrayList<String> permute(String s) {
         ArrayList<String> permutations = new ArrayList<>();
         permute(s, 0, permutations);
+        Collections.sort(permutations);
         return permutations;
     }
 
-    public static ArrayList<String> permute(String s, int start, ArrayList<String> permutations){
-
-        if(s.length() == start){
-           permutations.add(s);
-           return permutations;
+    public static void permute(String s, int start, ArrayList<String> permutations) {
+        if (s.length() == start) {
+            permutations.add(s);
+            return;
         }
 
+        // Use a HashSet to track characters already swapped at a position
+        HashSet<Character> swapped = new HashSet<>();
         for (int i = start; i < s.length(); i++) {
-             s = swap(s, start, i);
-            permute(s, start + 1, permutations);
-            s = swap(s, start, i);
+            // Skip swapping if the character is already swapped at this position
+            if (!swapped.contains(s.charAt(i))) {
+                s = swap(s, start, i);
+                permute(s, start + 1, permutations);
+                s = swap(s, start, i);
+                swapped.add(s.charAt(i));
+            }
         }
-        return permutations;
     }
 
     private static String swap(String s, int start, int i) {
@@ -37,9 +43,8 @@ public class StringPermutations {
         return new String(charArray);
     }
 
-
     public static void main(String[] args) {
-        String str = "ABC";
+        String str = "AAA";
         ArrayList<String> ans = permute(str);
         System.out.println(ans);
     }
