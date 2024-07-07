@@ -16,7 +16,9 @@ public class LinkedListNode {
 
        // traverse(head);
 
-        Node<Integer> ans = insertAtPos(2,9,head);
+        //Node<Integer> ans = insertAtPos(2,9,head);
+
+        Node<Integer> ans = deleteNodeAtPos(2, head);
 
         traverse(ans);
 
@@ -49,5 +51,21 @@ public class LinkedListNode {
        temp.next = newNode;
 
        return head;
+   }
+
+   public static Node<Integer> deleteNodeAtPos(int pos, Node<Integer> head){
+        if (pos == 0){
+            return head.next;
+        }
+
+        Node<Integer> temp = head;
+
+       for (int i = 0; i < pos - 1; i++) {
+           temp = temp.next;
+       }
+
+       temp.next = temp.next.next;
+
+       return  head;
    }
 }
