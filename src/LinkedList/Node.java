@@ -1,5 +1,7 @@
 package LinkedList;
-
+/*
+ *@author Amit Upadhyay
+ */
 public class Node<E> {
 
     E data;

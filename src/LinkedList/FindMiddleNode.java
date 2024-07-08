@@ -14,11 +14,11 @@ public class FindMiddleNode {
         n2.next = n3;
         n3.next = n4;
 
-        int ans = findMiddleNode(head);
-        System.out.println(ans);
+        Node<Integer> ans = findMiddleNode(head);
+        System.out.println(ans.data);
     }
 
-    public static int findMiddleNode(Node<Integer> head){
+    public static Node<Integer> findMiddleNode(Node<Integer> head){
 
         Node<Integer> fastPtr = head, slowPtr = head;
 
@@ -27,6 +27,6 @@ public class FindMiddleNode {
             fastPtr = fastPtr.next.next;
         }
         assert slowPtr != null;
-        return slowPtr.data;
+        return slowPtr;
     }
 }
