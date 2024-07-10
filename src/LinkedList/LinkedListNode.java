@@ -30,6 +30,7 @@ public class LinkedListNode {
             System.out.print(temp.data+ " -> ");
             temp = temp.next;
         }
+       System.out.println();
    }
 
    public static Node<Integer> insertAtPos(int pos, int data, Node<Integer> head){
